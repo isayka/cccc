@@ -1,8 +1,6 @@
 # Bounded Contexts
-## Customer
-Данные клиентов, договоры
-## Wallet
-кошельки счета балансы блокировки
+## CustomerWallet
+Данные клиентов, договоры, кошельки счета балансы блокировки
 ## Payment
 создание платежа, резервирование, списание
 ## CoreBanking
@@ -16,13 +14,11 @@
 # Context Map
 ```mermaid
 flowchart LR
-	Payment-->|Customer/Supplier|Customer
-	Payment-->|Customer/Supplier|Wallet
+	Payment-->|Customer/Supplier|CustomerWallet
 	Payment-->|Open Host Service|Merchant
 	Payment-->|ACL|CoreBanking
 	Payment-->|Customer/Supplier|AntiFraud
 	Payment-->|Published Language|Notification
-	AntiFraud-->|Customer/Supplier|Wallet
-	AntiFraud-->|Customer/Supplier|Customer
-	Notification-->|Customer/Supplier|Customer
+	AntiFraud-->|Customer/Supplier|CustomerWallet
+	Notification-->|Customer/Supplier|CustomerWallet
 ```
